@@ -1,0 +1,6 @@
+plugin:
+    name: 'shohabbos.shopaholicapi::lang.plugin.name'
+    description: 'shohabbos.shopaholicapi::lang.plugin.description'
+    author: Shohabbos
+    icon: oc-icon-code-fork
+    homepage: 'https://itmaker.uz'
