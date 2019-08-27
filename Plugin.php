@@ -10,8 +10,6 @@ class Plugin extends PluginBase
 	/** @var array Plugin dependencies */
     public $require = ['Lovata.Shopaholic', 'Lovata.Toolbox'];
 
-    public $disabled = false;
-
     public function registerComponents()
     {
     }
