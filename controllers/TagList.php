@@ -12,7 +12,6 @@ class TagList extends Controller
 {
 
 
-
 	public function index() {
 		$sort = input('sort');
 		$available = input('available');

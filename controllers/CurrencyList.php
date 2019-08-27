@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 // custom classess
 use Lovata\Shopaholic\Classes\Collection\CurrencyCollection;
 use Lovata\Shopaholic\Classes\Item\CurrencyItem;
+use \Lovata\Shopaholic\Classes\Helper\CurrencyHelper;
 use Lovata\Shopaholic\Models\Currency as CurrencyModel;
 
 class CurrencyList extends Controller
@@ -27,7 +28,7 @@ class CurrencyList extends Controller
 			$list->sort($sort);
 		}
 
-
+ 
 		//
 		// result
 		//
@@ -47,6 +48,14 @@ class CurrencyList extends Controller
 		
 		return $result;
 	}
+
+
+	// switch currency
+	public function switch() {
+		$code = Input::get('currency');
+
+        return CurrencyHelper::instance()->switchActive($code);
+    }
 
 
 }

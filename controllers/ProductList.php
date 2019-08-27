@@ -7,16 +7,27 @@ use Illuminate\Http\Request;
 // custom classess
 use Lovata\Shopaholic\Classes\Collection\ProductCollection;
 use Lovata\Shopaholic\Classes\Item\ProductItem;
+use Lovata\CompareShopaholic\Classes\Helper\CompareHelper;
 use Lovata\Shopaholic\Models\Product as ProductModel;
 
 class ProductList extends Controller
 {
 
+	public function addtocompare() {
+		$iProductID = Input::get('product_id');
 
+        /** @var CompareHelper $obCompareHelper */
+        $obCompareHelper = app(CompareHelper::class);
+
+        $obCompareHelper->add($iProductID);
+        $arProductIDList = $obCompareHelper->getList();
+
+        return $arProductIDList;
+	}
 
 	public function index() {
 		$sort = input('sort');
-		$Product = input('category');
+		$category = input('category');
 		$brand = input('brand');
 		$tag = input('tag');
 		$viewed = input('viewed');
