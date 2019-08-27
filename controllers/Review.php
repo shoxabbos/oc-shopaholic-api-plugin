@@ -5,20 +5,19 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 
 // custom classess
-use Lovata\OrdersShopaholic\Components\MakeOrder as MakeOrderComponent;
+use Lovata\ReviewsShopaholic\Components\MakeReview;
 
-class MakeOrder extends Controller
+class Review extends Controller
 {
 
-	public $component;
+	public $makeReview;
 
 	public function __construct() {
-		$this->component = new MakeOrderComponent();
+		$this->makeReview = new MakeReview();
 	}
 
-
 	public function create() {
-		return $this->component->onCreate();
+		return $this->makeReview->onCreate();
 	}
 
 }

@@ -49,8 +49,10 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('/cartlist/savedata', 'Shohabbos\Shopaholicapi\Controllers\CartList@saveData');
 
 
-    Route::post('/makeorder/create', 'Shohabbos\Shopaholicapi\Controllers\MakeOrder@create');
+    Route::get('/order/get/{slug}', 'Shohabbos\Shopaholicapi\Controllers\Order@get');
+    Route::post('/order/create', 'Shohabbos\Shopaholicapi\Controllers\Order@create');
 
+    Route::post('/review/create', 'Shohabbos\Shopaholicapi\Controllers\Review@create');
 
 
 
