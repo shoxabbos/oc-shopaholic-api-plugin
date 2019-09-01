@@ -2,9 +2,11 @@
 use RainLab\User\Models\User as UserModel;
 use Lovata\Toolbox\Classes\Helper\UserHelper;
 
-Route::group(['prefix' => 'api'], function () {
+Route::group([
+    'prefix' => 'api', 
+    'middleware' => 'Shohabbos\Shopaholicapi\Middleware\ResponseMiddleware'
+], function () {
 
-    
     //
     // Public methods
     //
