@@ -22,8 +22,15 @@ class CartList extends Controller
     public function get($obShippingTypeItem = null)
     {
         CartProcessor::instance()->setActiveShippingType($obShippingTypeItem);
+        
+        $list = CartProcessor::instance()->get();
 
-        return CartProcessor::instance()->get();
+        $data = [];
+        foreach ($list as $key => $value) {
+            $data[] = $value->toArray();
+        }
+
+        return $data;        
     }
 
 	/**

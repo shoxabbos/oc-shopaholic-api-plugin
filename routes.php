@@ -36,6 +36,15 @@ Route::group([
     Route::get('/categories/{id}', 'Shohabbos\Shopaholicapi\Controllers\CategoryList@page');
     Route::get('/categories/{id}/children', 'Shohabbos\Shopaholicapi\Controllers\CategoryList@children');
 
+    Route::get('/banners', 'Shohabbos\Shopaholicapi\Controllers\BannerList@index');    
+
+    Route::get('/stores', 'Shohabbos\Shopaholicapi\Controllers\StoreList@index');
+    Route::get('/stores/{id}', 'Shohabbos\Shopaholicapi\Controllers\StoreList@page');
+    Route::get('/stores/get/products', 'Shohabbos\Shopaholicapi\Controllers\StoreList@products');  
+    Route::get('/mystore', 'Shohabbos\Shopaholicapi\Controllers\StoreList@mystore');  
+    Route::post('/mystore/update', 'Shohabbos\Shopaholicapi\Controllers\StoreList@update');  
+
+    Route::post('/statuslist', 'Shohabbos\Shopaholicapi\Controllers\StatusList@page');      
 
 
     //
@@ -144,21 +153,4 @@ Route::group([
         $token = JWTAuth::fromUser($userModel);
         return Response::json(compact('token', 'user'));
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
