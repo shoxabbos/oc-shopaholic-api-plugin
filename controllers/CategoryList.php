@@ -2,70 +2,45 @@
 
 use Input;
 use Illuminate\Routing\Controller;
-use Illuminate\Http\Request;
 
 // custom classess
-use Lovata\Shopaholic\Classes\Collection\CategoryCollection;
-use Lovata\Shopaholic\Classes\Item\CategoryItem;
 use Lovata\Shopaholic\Models\Category as CategoryModel;
+use Shohabbos\Shopaholicapi\Resources\CategoryResource;
+use Shohabbos\Shopaholicapi\Resources\CategoryResourceCollection;
+
 
 class CategoryList extends Controller
 {
 
-
-
 	public function index() {
-		$tree = input('tree');
-		$page = input('page', 1);
 		$search = input('search');
-		$perpage = input('perpage', 20);
 
-		//
-		// filter
-		//
-		$list = CategoryCollection::make()->active();
+		$query = new CategoryModel;
+		$data = $query->getAllRoot();
 
-		if ($tree) {
-			$list->tree();
-		}
-
-		if ($search) {
-			$list->search($search);
-		}
-
-		$list = $list->page($page, $perpage);
-
-
-		//
-		// result
-		//
-		$data = [];
-		foreach ($list as $key => $value) {
-			$data[] = $value->toArray();
-		}
-
-		return $data;
+		return new CategoryResourceCollection($data);
 	}
 
 
 	public function page($id) {
-		$category = CategoryItem::make($id);
+		$model = CategoryModel::find($id);
 
-		$result = $category->toArray();
-		
-		return $result;
-	}
-
-	public function children($id) {
-		$category = CategoryItem::make($id);
-
-		$result = [];
-		
-		foreach ($category->children() as $key => $value) {
-			$result[] = $value->toArray();
+		if (!$model) {
+			return response()->json(['message' => 'Not Found!'], 404);
 		}
 
-		return $result;
+		return new CategoryResource($model);
+	}
+
+ 
+	public function children($id) {
+		$model = CategoryModel::find($id);
+
+		if (!$model) {
+			return response()->json(['message' => 'Not Found!'], 404);
+		}
+
+		return new CategoryResourceCollection($model->getChildren());
 	}
 
 
