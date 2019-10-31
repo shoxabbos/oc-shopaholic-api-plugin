@@ -16,18 +16,6 @@ use Shohabbos\Shopaholicapi\Resources\ProductResource;
 class ProductList extends Controller
 {
 
-	public function addtocompare() {
-		$iProductID = Input::get('product_id');
-
-        /** @var CompareHelper $obCompareHelper */
-        $obCompareHelper = app(CompareHelper::class);
-
-        $obCompareHelper->add($iProductID);
-        $arProductIDList = $obCompareHelper->getList();
-
-        return $arProductIDList;
-	}
-
 	public function index() {
 		$sort = input('sort');
 		$category = input('category');
@@ -100,7 +88,6 @@ class ProductList extends Controller
     	//
         $data = [];
         foreach ($list as $key => $value) {
-            // $data[] = $value->toArray();
             $data[] = new ProductResource($value);
         }
 
@@ -111,15 +98,11 @@ class ProductList extends Controller
 
 
 	public function page($id) {
-		$product = ProductItem::make($id);
+		$product = ProductModel::with('related', 'accessory', 'review')->find($id);
 
-		$result = $product->toArray();
+		$data = new ProductResource($product);
 
-		foreach ($product->offer as $key => $value) {
-			$result['offers'][] = $value->toArray();
-		}
-		
-		return $result;
+		return $data;
 	}
 
 

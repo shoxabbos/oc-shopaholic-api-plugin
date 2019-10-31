@@ -21,6 +21,7 @@ class OfferResource extends Resource
             'quantity' => $this->quantity,
             'price_value' => $this->price_value,
             'old_price_value' => $this->old_price_value,
+            'bch_price_value' => $this->old_price_value - $this->price_value,
         ];
 
         // image for preview

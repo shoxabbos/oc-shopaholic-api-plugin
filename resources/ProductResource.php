@@ -28,6 +28,10 @@ class ProductResource extends Resource
             'additional_category_id' => $this->additional_category_id,
             'trashed' => $this->trashed,
             'property_value_array' => $this->property_value_array,
+
+            'related' => self::collection($this->whenLoaded('related')),
+            'accessory' => self::collection($this->whenLoaded('accessory')),
+            'review' => ReviewResource::collection($this->whenLoaded('review')),
         ];
 
         // image for preview
@@ -45,13 +49,18 @@ class ProductResource extends Resource
             }
         }
 
+        // load offers
+        if ($this->offer) {
+            $data['price'] = new OfferResource($this->offer()->first());
+        }
+
         // images for gallery
         if ($this->images) {
             $images = [];
 
             foreach ($this->images as $key => $image) {
                 $images[] = [
-                    'image' => $image->getThumb(300, 300, ['mode' => 'crop']),
+                    'image' => $image->getThumb(500, 500, ['mode' => 'crop']),
                     'original_image' => $image->getPath()
                 ]; 
             }
