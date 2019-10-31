@@ -110,4 +110,17 @@ class ProductList extends Controller
 	}
 
 
+	public function page($id) {
+		$product = ProductItem::make($id);
+
+		$result = $product->toArray();
+
+		foreach ($product->offer as $key => $value) {
+			$result['offers'][] = $value->toArray();
+		}
+		
+		return $result;
+	}
+
+
 }

@@ -36,6 +36,15 @@ class ProductResource extends Resource
             $data['original_preview_image'] = $this->preview_image->getPath();
         }
 
+        // load offers
+        if ($this->offer) {
+            $data['offer'] = [];
+
+            foreach ($this->offer as $key => $value) {
+                $data['offer'][] = new OfferResource($value);                
+            }
+        }
+
         // images for gallery
         if ($this->images) {
             $images = [];
