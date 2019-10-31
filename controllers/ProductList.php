@@ -5,10 +5,13 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 
 // custom classess
-use Lovata\Shopaholic\Classes\Collection\ProductCollection;
-use Lovata\Shopaholic\Classes\Item\ProductItem;
-use Lovata\CompareShopaholic\Classes\Helper\CompareHelper;
 use Lovata\Shopaholic\Models\Product as ProductModel;
+use Lovata\Shopaholic\Classes\Item\ProductItem;
+use Lovata\Shopaholic\Classes\Collection\ProductCollection;
+use Lovata\CompareShopaholic\Classes\Helper\CompareHelper;
+
+use Shohabbos\Shopaholicapi\Resources\ProductResource;
+
 
 class ProductList extends Controller
 {
@@ -92,29 +95,18 @@ class ProductList extends Controller
 
 		$list = $list->page($page, $perpage);
 
-
 		//
-		// result
-		//
-		$data = [];
-		foreach ($list as $key => $value) {
-			$data[] = $value->toArray();
-		}
+    	// result
+    	//
+        $data = [];
+        foreach ($list as $key => $value) {
+            // $data[] = $value->toArray();
+            $data[] = new ProductResource($value);
+        }
 
-		return $data;
-	}
-
-
-	public function page($id) {
-		$product = ProductItem::make($id);
-
-		$result = $product->toArray();
-
-		foreach ($product->offer as $key => $value) {
-			$result['offers'][] = $value->toArray();
-		}
-		
-		return $result;
+        return [
+        	'data' => $data
+        ];
 	}
 
 
