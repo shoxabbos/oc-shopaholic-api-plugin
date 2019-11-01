@@ -100,6 +100,10 @@ class ProductList extends Controller
 	public function page($id) {
 		$product = ProductModel::with('related', 'accessory', 'review')->find($id);
 
+		if (!$product) {
+			return response()->json(['message' => 'Not Found!'], 404);
+		}
+
 		$data = new ProductResource($product);
 
 		return $data;
