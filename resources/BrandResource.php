@@ -28,6 +28,20 @@ class BrandResource extends Resource
             $data['original_preview_image'] = $this->preview_image->getPath();
         }
 
+        // images for gallery
+        if ($this->images) {
+            $images = [];
+
+            foreach ($this->images as $key => $image) {
+                $images[] = [
+                    'image' => $image->getThumb(500, 500, ['mode' => 'crop']),
+                    'original_image' => $image->getPath()
+                ]; 
+            }
+
+            $data['images'] = $images;
+        }
+
         return $data;
     }
     

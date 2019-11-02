@@ -13,30 +13,40 @@ use Shohabbos\Stores\Models\Store;
 use Lovata\Shopaholic\Classes\Collection\ProductCollection;
 use Lovata\Shopaholic\Models\Product as ProductModel;
 
+use Shohabbos\Shopaholicapi\Resources\StoreResource;
+use Shohabbos\Shopaholicapi\Resources\ProductResource;
+
 class StoreList  extends Controller
 {
-	public function index() {		
-		
-		$list = Store::get();		
 
-		return $list;
+	public function index() {
+		$page = input('page', 1);
+		$perpage = input('perpage', 20);
+ 
+		$list = Store::with('logo')
+				->paginate($perpage, $page);		
+
+		return StoreResource::collection($list);
 	}
 
 	public function page($id) {
-		$store = Store::find($id);		
+		$store = Store::with(
+			'logo', 'user', 'banners', 'banners.image',
+			'header_image', 'products', 'orders'
+		)->find($id);
 		
 		if (!$store){
 			return response()->json('not found', 401);
 		}
 
-		return $store;
+		return new StoreResource($store);
 	}
 
 	public function mystore() {
 		$user = $this->auth();		
 		$store = Store::where('id', $user->store->id)->first();		
 		
-		return $store;
+		return new StoreResource($store);
 	}
 
 	public function update(Request $request) {
@@ -69,7 +79,7 @@ class StoreList  extends Controller
 		$store->logo = Input::file('logo');		
 		$store->save();
 
-        return $store;		
+        return $store;
 	}
 
 	public function products() {
@@ -78,7 +88,7 @@ class StoreList  extends Controller
 
 		$products = ProductModel::where('store_id', $id)->get();			
 
-		return $products;
+		return ProductResource::collection($products);
 	}
 
 	// private methods

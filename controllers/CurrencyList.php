@@ -10,6 +10,8 @@ use Lovata\Shopaholic\Classes\Item\CurrencyItem;
 use \Lovata\Shopaholic\Classes\Helper\CurrencyHelper;
 use Lovata\Shopaholic\Models\Currency as CurrencyModel;
 
+use Shohabbos\Shopaholicapi\Resources\CurrencyResource;
+
 class CurrencyList extends Controller
 {
 
@@ -34,7 +36,7 @@ class CurrencyList extends Controller
 		//
 		$data = [];
 		foreach ($list as $key => $value) {
-			$data[] = $value->toArray();
+			$data[] = new CurrencyResource($value);
 		}
 
 		return $data;
@@ -42,11 +44,9 @@ class CurrencyList extends Controller
 
 
 	public function page($id) {
-		$brand = CurrencyItem::make($id);
+		$brand = CurrencyModel::find($id);
 
-		$result = $brand->toArray();
-		
-		return $result;
+		return new CurrencyResource($brand);
 	}
 
 

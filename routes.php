@@ -28,7 +28,7 @@ Route::group([
 
     Route::get('/tags', 'Shohabbos\Shopaholicapi\Controllers\TagList@index');
 
-    //Route::get('/labellist', 'Shohabbos\Shopaholicapi\Controllers\LabelList@index');
+    Route::get('/labels', 'Shohabbos\Shopaholicapi\Controllers\LabelList@index');
     Route::get('/shippingtypelist', 'Shohabbos\Shopaholicapi\Controllers\ShippingTypeList@index');
     Route::get('/paymentmethodlist', 'Shohabbos\Shopaholicapi\Controllers\PaymentMethodList@index');
 

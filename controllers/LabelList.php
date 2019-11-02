@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 // custom classess
 use Lovata\LabelsShopaholic\Classes\Collection\LabelCollection;
 
+use Shohabbos\Shopaholicapi\Resource\LabelResource;
+
 class LabelList extends Controller
 {
 
@@ -35,7 +37,7 @@ class LabelList extends Controller
 		//
 		$data = [];
 		foreach ($list as $key => $value) {
-			$data[] = $value->toArray();
+			$data[] = new LabelResource($value);
 		}
 
 		return $data;
