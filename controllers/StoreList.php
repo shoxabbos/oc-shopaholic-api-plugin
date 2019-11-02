@@ -22,9 +22,15 @@ class StoreList  extends Controller
 	public function index() {
 		$page = input('page', 1);
 		$perpage = input('perpage', 20);
- 
-		$list = Store::with('logo')
-				->paginate($perpage, $page);		
+		$searchQuery = input('query');
+ 		
+		$query = Store::with('logo');
+
+		if ($searchQuery && strlen($searchQuery) > 1) {
+			$query->where('name', 'like', "%{$searchQuery}%");
+		}
+
+		$list =	$query->paginate($perpage, $page);		
 
 		return StoreResource::collection($list);
 	}

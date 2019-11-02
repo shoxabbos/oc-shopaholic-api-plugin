@@ -14,7 +14,7 @@ class StoreResource extends Resource
     {
         return [
             'id' => $this->id,
-            'name' => $this->address,
+            'name' => $this->name,
             'contacts' => $this->contacts,
             'legal_name' => $this->legal_name,
             'email' => $this->email,
