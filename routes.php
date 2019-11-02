@@ -8,41 +8,46 @@ Route::group([
 ], function () {
 
     //
-    // Public methods
+    // Ready to use
     //
-
-
-    // collections
     Route::get('/products', 'Shohabbos\Shopaholicapi\Controllers\ProductList@index');
     Route::get('/products/{id}', 'Shohabbos\Shopaholicapi\Controllers\ProductList@page');
-    Route::post('/products/addtocompare', 'Shohabbos\Shopaholicapi\Controllers\ProductList@addtocompare');
 
     Route::get('/brands', 'Shohabbos\Shopaholicapi\Controllers\BrandList@index');
     Route::get('/brands/{id}', 'Shohabbos\Shopaholicapi\Controllers\BrandList@page');
 
     Route::get('/currencies', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@index');
     Route::get('/currencies/{id}', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@page');
-    Route::post('/currencies/switch', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@switch');
-
-
-
-    Route::get('/tags', 'Shohabbos\Shopaholicapi\Controllers\TagList@index');
-
-    Route::get('/labels', 'Shohabbos\Shopaholicapi\Controllers\LabelList@index');
-    Route::get('/shippingtypelist', 'Shohabbos\Shopaholicapi\Controllers\ShippingTypeList@index');
-    Route::get('/paymentmethodlist', 'Shohabbos\Shopaholicapi\Controllers\PaymentMethodList@index');
 
     Route::get('/categories', 'Shohabbos\Shopaholicapi\Controllers\CategoryList@index');
     Route::get('/categories/{id}', 'Shohabbos\Shopaholicapi\Controllers\CategoryList@page');
     Route::get('/categories/{id}/children', 'Shohabbos\Shopaholicapi\Controllers\CategoryList@children');
 
-    Route::get('/banners', 'Shohabbos\Shopaholicapi\Controllers\BannerList@index');    
-
     Route::get('/stores', 'Shohabbos\Shopaholicapi\Controllers\StoreList@index');
-    Route::get('/stores/{id}', 'Shohabbos\Shopaholicapi\Controllers\StoreList@page');
-    Route::get('/stores/get/products', 'Shohabbos\Shopaholicapi\Controllers\StoreList@products');  
-    Route::get('/mystore', 'Shohabbos\Shopaholicapi\Controllers\StoreList@mystore');  
-    Route::post('/mystore/update', 'Shohabbos\Shopaholicapi\Controllers\StoreList@update');  
+    Route::get('/store/{id}', 'Shohabbos\Shopaholicapi\Controllers\StoreList@page');
+    Route::get('/store/{id}/products', 'Shohabbos\Shopaholicapi\Controllers\StoreList@storeProducts');
+
+
+
+
+
+
+
+
+
+
+
+    // collections
+    Route::get('/banners', 'Shohabbos\Shopaholicapi\Controllers\BannerList@index');    
+    Route::post('/products/addtocompare', 'Shohabbos\Shopaholicapi\Controllers\ProductList@addtocompare');
+    Route::post('/currencies/switch', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@switch');
+    Route::get('/tags', 'Shohabbos\Shopaholicapi\Controllers\TagList@index');
+    Route::get('/labels', 'Shohabbos\Shopaholicapi\Controllers\LabelList@index');
+    Route::get('/shippingtypelist', 'Shohabbos\Shopaholicapi\Controllers\ShippingTypeList@index');
+    Route::get('/paymentmethodlist', 'Shohabbos\Shopaholicapi\Controllers\PaymentMethodList@index');
+
+
+    
 
     Route::post('/statuslist', 'Shohabbos\Shopaholicapi\Controllers\StatusList@page');      
 

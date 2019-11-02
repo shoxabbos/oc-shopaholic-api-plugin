@@ -32,6 +32,9 @@ class ProductResource extends Resource
             'related' => self::collection($this->whenLoaded('related')),
             'accessory' => self::collection($this->whenLoaded('accessory')),
             'review' => ReviewResource::collection($this->whenLoaded('review')),
+
+            'original_image' => new ImageResource($this->whenLoaded('preview_image')),
+            'original_images' => ImageResource::collection($this->whenLoaded('images')),
         ];
 
         // image for preview
