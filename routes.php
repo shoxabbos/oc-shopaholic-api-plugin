@@ -27,6 +27,8 @@ Route::group([
     Route::get('/store/{id}', 'Shohabbos\Shopaholicapi\Controllers\StoreList@page');
     Route::get('/store/{id}/products', 'Shohabbos\Shopaholicapi\Controllers\StoreList@storeProducts');
 
+    Route::get('/paymentmethodlist', 'Shohabbos\Shopaholicapi\Controllers\PaymentMethodList@index');
+    Route::get('/shippingtypelist', 'Shohabbos\Shopaholicapi\Controllers\ShippingTypeList@index');
 
 
 
@@ -43,18 +45,16 @@ Route::group([
     Route::post('/currencies/switch', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@switch');
     Route::get('/tags', 'Shohabbos\Shopaholicapi\Controllers\TagList@index');
     Route::get('/labels', 'Shohabbos\Shopaholicapi\Controllers\LabelList@index');
-    Route::get('/shippingtypelist', 'Shohabbos\Shopaholicapi\Controllers\ShippingTypeList@index');
-    Route::get('/paymentmethodlist', 'Shohabbos\Shopaholicapi\Controllers\PaymentMethodList@index');
 
 
     
 
-    Route::post('/statuslist', 'Shohabbos\Shopaholicapi\Controllers\StatusList@page');      
 
 
     //
     // Private methods
     //
+    Route::post('/statuslist', 'Shohabbos\Shopaholicapi\Controllers\StatusList@page');      
     Route::get('/cartlist/get', 'Shohabbos\Shopaholicapi\Controllers\CartList@get');
     Route::post('/cartlist/add', 'Shohabbos\Shopaholicapi\Controllers\CartList@add');
     Route::post('/cartlist/update', 'Shohabbos\Shopaholicapi\Controllers\CartList@update');
@@ -69,6 +69,8 @@ Route::group([
     Route::post('/order/create', 'Shohabbos\Shopaholicapi\Controllers\Order@create');
 
     Route::post('/review/create', 'Shohabbos\Shopaholicapi\Controllers\Review@create');
+
+
 
 
 
