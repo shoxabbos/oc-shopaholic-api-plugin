@@ -29,10 +29,10 @@ class ProductResource extends Resource
             'trashed' => $this->trashed,
             'property_value_array' => $this->property_value_array,
 
+            'offer' => self::collection($this->whenLoaded('offer')),
             'related' => self::collection($this->whenLoaded('related')),
             'accessory' => self::collection($this->whenLoaded('accessory')),
             'review' => ReviewResource::collection($this->whenLoaded('review')),
-
             'original_image' => new ImageResource($this->whenLoaded('preview_image')),
             'original_images' => ImageResource::collection($this->whenLoaded('images')),
         ];

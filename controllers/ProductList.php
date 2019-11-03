@@ -16,6 +16,27 @@ use Shohabbos\Shopaholicapi\Resources\ProductResource;
 class ProductList extends Controller
 {
 
+	public function filterByid() {
+		$id = input('id');
+		$idlist = input('idlist');
+
+		if (!empty($idlist)) {
+			$idlistArray = explode(",", $idlist);
+		}
+
+		if (empty($idlistArray)) {
+			return [
+				'data' => []
+			];
+		}
+
+		$result = ProductModel::with('offer', 'preview_image', 'images')
+					->whereIn('id', $idlistArray)
+					->get();
+
+		return ProductResource::collection($result);
+	}
+
 	public function index() {
 		$sort = input('sort');
 		$category = input('category');
