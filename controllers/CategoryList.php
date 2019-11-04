@@ -4,6 +4,7 @@ use Input;
 use Illuminate\Routing\Controller;
 
 // custom classess
+use Lovata\Shopaholic\Classes\Item\CategoryItem;
 use Lovata\Shopaholic\Models\Category as CategoryModel;
 use Shohabbos\Shopaholicapi\Resources\CategoryResource;
 
@@ -22,13 +23,15 @@ class CategoryList extends Controller
 
 
 	public function page($id) {
-		$model = CategoryModel::find($id);
+		$model = CategoryItem::make($id);
 
 		if (!$model) {
 			return response()->json(['message' => 'Not Found!'], 404);
 		}
 
-		return new CategoryResource($model);
+		$data = new CategoryResource($model);
+
+		return $data;
 	}
 
  
@@ -41,6 +44,7 @@ class CategoryList extends Controller
 
 		return CategoryResource::collection($model->getChildren());
 	}
+
 
 
 }

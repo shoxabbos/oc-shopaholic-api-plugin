@@ -16,6 +16,8 @@ class CategoryResource extends Resource
             'id' => $this->id,
             'name' => $this->name,
             'parent_id' => $this->parent_id,
+            'original_image' => new ImageResource($this->whenLoaded('preview_image')),
+            'original_images' => ImageResource::collection($this->whenLoaded('images')),
         ];
 
         // image for preview

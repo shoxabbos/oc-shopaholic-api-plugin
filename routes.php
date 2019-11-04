@@ -21,8 +21,8 @@ Route::group([
     Route::get('/currencies/{id}', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@page');
 
     Route::get('/categories', 'Shohabbos\Shopaholicapi\Controllers\CategoryList@index');
-    Route::get('/categories/{id}', 'Shohabbos\Shopaholicapi\Controllers\CategoryList@page');
-    Route::get('/categories/{id}/children', 'Shohabbos\Shopaholicapi\Controllers\CategoryList@children');
+    Route::get('/category/{id}', 'Shohabbos\Shopaholicapi\Controllers\CategoryList@page');
+    Route::get('/category/{id}/children', 'Shohabbos\Shopaholicapi\Controllers\CategoryList@children');
 
     Route::get('/stores', 'Shohabbos\Shopaholicapi\Controllers\StoreList@index');
     Route::get('/store/{id}', 'Shohabbos\Shopaholicapi\Controllers\StoreList@page');
