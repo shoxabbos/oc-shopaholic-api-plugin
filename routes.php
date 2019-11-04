@@ -11,8 +11,8 @@ Route::group([
     // Ready to use
     //
     Route::get('/products', 'Shohabbos\Shopaholicapi\Controllers\ProductList@index');
+    Route::get('/product/{id}', 'Shohabbos\Shopaholicapi\Controllers\ProductList@page');
     Route::get('/products/byid', 'Shohabbos\Shopaholicapi\Controllers\ProductList@filterByid');
-    Route::get('/products/{id}', 'Shohabbos\Shopaholicapi\Controllers\ProductList@page');
 
     Route::get('/brands', 'Shohabbos\Shopaholicapi\Controllers\BrandList@index');
     Route::get('/brands/{id}', 'Shohabbos\Shopaholicapi\Controllers\BrandList@page');

@@ -10,7 +10,8 @@ use Lovata\Shopaholic\Classes\Item\ProductItem;
 use Lovata\Shopaholic\Classes\Collection\ProductCollection;
 use Lovata\CompareShopaholic\Classes\Helper\CompareHelper;
 
-use Shohabbos\Shopaholicapi\Resources\ProductResource;
+use Shohabbos\Shopaholicapi\Resources\Product\SingleResource;
+use Shohabbos\Shopaholicapi\Resources\Product\MultiResource;
 
 
 class ProductList extends Controller
@@ -34,7 +35,7 @@ class ProductList extends Controller
 					->whereIn('id', $idlistArray)
 					->get();
 
-		return ProductResource::collection($result);
+		return MultiResource::collection($result);
 	}
 
 	public function index() {
@@ -109,7 +110,7 @@ class ProductList extends Controller
     	//
         $data = [];
         foreach ($list as $key => $value) {
-            $data[] = new ProductResource($value);
+            $data[] = new MultiResource($value);
         }
 
         return [
@@ -125,7 +126,7 @@ class ProductList extends Controller
 			return response()->json(['message' => 'Not Found!'], 404);
 		}
 
-		$data = new ProductResource($product);
+		$data = new SingleResource($product);
 
 		return $data;
 	}
