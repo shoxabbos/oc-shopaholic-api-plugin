@@ -15,7 +15,7 @@ Route::group([
     Route::get('/products/byid', 'Shohabbos\Shopaholicapi\Controllers\ProductList@filterByid');
 
     Route::get('/brands', 'Shohabbos\Shopaholicapi\Controllers\BrandList@index');
-    Route::get('/brands/{id}', 'Shohabbos\Shopaholicapi\Controllers\BrandList@page');
+    Route::get('/brand/{id}', 'Shohabbos\Shopaholicapi\Controllers\BrandList@page');
 
     Route::get('/currencies', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@index');
     Route::get('/currencies/{id}', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@page');
@@ -40,16 +40,15 @@ Route::group([
 
 
 
+
+
+
     // collections
     Route::get('/banners', 'Shohabbos\Shopaholicapi\Controllers\BannerList@index');    
     Route::post('/products/addtocompare', 'Shohabbos\Shopaholicapi\Controllers\ProductList@addtocompare');
     Route::post('/currencies/switch', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@switch');
     Route::get('/tags', 'Shohabbos\Shopaholicapi\Controllers\TagList@index');
     Route::get('/labels', 'Shohabbos\Shopaholicapi\Controllers\LabelList@index');
-
-
-    
-
 
 
     //

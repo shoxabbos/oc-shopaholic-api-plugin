@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use Lovata\Shopaholic\Classes\Collection\BrandCollection;
 use Lovata\Shopaholic\Classes\Item\BrandItem;
 use Lovata\Shopaholic\Models\Brand as BrandModel;
-use Shohabbos\Shopaholicapi\Resources\BrandResource;
+
+use Shohabbos\Shopaholicapi\Resources\Brand\SingleResource;
+use Shohabbos\Shopaholicapi\Resources\Brand\MultiResource;
 
 class BrandList extends Controller
 {
@@ -42,13 +44,12 @@ class BrandList extends Controller
 
 		$list = $list->page($page, $perpage);
 
-
 		//
 		// result
 		//
 		$data = [];
 		foreach ($list as $key => $value) {
-			$data[] = new BrandResource($value);
+			$data[] = new MultiResource($value);
 		}
 
 		return [
@@ -63,7 +64,7 @@ class BrandList extends Controller
 			return response()->json(['message' => 'Not Found!'], 404);
 		}
 
-		return new BrandResource($brand);
+		return new SingleResource($brand);
 	}
 
 

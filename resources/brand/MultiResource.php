@@ -1,8 +1,8 @@
-<?php namespace Shohabbos\Shopaholicapi\Resources;
+<?php namespace Shohabbos\Shopaholicapi\Resources\Brand;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class BrandResource extends Resource
+class MultiResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -26,20 +26,6 @@ class BrandResource extends Resource
         if ($this->preview_image) {
             $data['preview_image'] = $this->preview_image->getThumb(250, 250, ['mode' => 'crop']);
             $data['original_preview_image'] = $this->preview_image->getPath();
-        }
-
-        // images for gallery
-        if ($this->images) {
-            $images = [];
-
-            foreach ($this->images as $key => $image) {
-                $images[] = [
-                    'image' => $image->getThumb(500, 500, ['mode' => 'crop']),
-                    'original_image' => $image->getPath()
-                ]; 
-            }
-
-            $data['images'] = $images;
         }
 
         return $data;
