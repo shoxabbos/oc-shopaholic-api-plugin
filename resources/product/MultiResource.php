@@ -2,8 +2,6 @@
 
 use Illuminate\Http\Resources\Json\Resource;
 
-use Shohabbos\Shopaholicapi\Resources\OfferResource;
-
 class MultiResource extends Resource
 {
     /**

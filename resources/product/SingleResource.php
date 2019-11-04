@@ -4,7 +4,6 @@ use Illuminate\Http\Resources\Json\Resource;
 
 use Shohabbos\Shopaholicapi\Resources\ImageResource;
 use Shohabbos\Shopaholicapi\Resources\ReviewResource;
-use Shohabbos\Shopaholicapi\Resources\OfferResource;
 
 class SingleResource extends Resource
 {

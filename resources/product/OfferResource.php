@@ -1,4 +1,4 @@
-<?php namespace Shohabbos\Shopaholicapi\Resources;
+<?php namespace Shohabbos\Shopaholicapi\Resources\Product;
 
 use Illuminate\Http\Resources\Json\Resource;
 
