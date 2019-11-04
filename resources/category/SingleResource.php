@@ -1,8 +1,10 @@
-<?php namespace Shohabbos\Shopaholicapi\Resources;
+<?php namespace Shohabbos\Shopaholicapi\Resources\Category;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class CategoryResource extends Resource
+use Shohabbos\Shopaholicapi\Resources\ImageResource;
+
+class SingleResource extends Resource
 {
     /**
      * Transform the resource into an array.

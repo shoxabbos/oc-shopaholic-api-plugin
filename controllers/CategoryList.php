@@ -6,7 +6,9 @@ use Illuminate\Routing\Controller;
 // custom classess
 use Lovata\Shopaholic\Classes\Item\CategoryItem;
 use Lovata\Shopaholic\Models\Category as CategoryModel;
-use Shohabbos\Shopaholicapi\Resources\CategoryResource;
+
+use Shohabbos\Shopaholicapi\Resources\Category\MultiResource;
+use Shohabbos\Shopaholicapi\Resources\Category\SingleResource;
 
 
 class CategoryList extends Controller
@@ -18,7 +20,7 @@ class CategoryList extends Controller
 		$query = new CategoryModel;
 		$data = $query->getAllRoot();
 
-		return CategoryResource::collection($data);
+		return MultiResource::collection($data);
 	}
 
 
@@ -29,7 +31,7 @@ class CategoryList extends Controller
 			return response()->json(['message' => 'Not Found!'], 404);
 		}
 
-		$data = new CategoryResource($model);
+		$data = new SingleResource($model);
 
 		return $data;
 	}
@@ -42,7 +44,7 @@ class CategoryList extends Controller
 			return response()->json(['message' => 'Not Found!'], 404);
 		}
 
-		return CategoryResource::collection($model->getChildren());
+		return MultiResource::collection($model->getChildren());
 	}
 
 
