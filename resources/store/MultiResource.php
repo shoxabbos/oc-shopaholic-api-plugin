@@ -1,8 +1,10 @@
-<?php namespace Shohabbos\Shopaholicapi\Resources;
+<?php namespace Shohabbos\Shopaholicapi\Resources\Store;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class StoreResource extends Resource
+use Shohabbos\Shopaholicapi\Resources\ImageResource;
+
+class MultiResource extends Resource
 {
     /** 
      * Transform the resource into an array.
@@ -21,13 +23,7 @@ class StoreResource extends Resource
             'user_id' => $this->user_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-
-            'user' => new UserResource($this->whenLoaded('user')),
             'logo' => new ImageResource($this->whenLoaded('logo')),
-            'header_image' => new ImageResource($this->whenLoaded('header_image')),
-
-            'products' => ProductResource::collection($this->whenLoaded('products')),
-            'banners' => BannerResource::collection($this->whenLoaded('banners')),
         ];
     }
     

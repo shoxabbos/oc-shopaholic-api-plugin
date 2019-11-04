@@ -10,8 +10,10 @@ use Shohabbos\Stores\Models\Store;
 use Lovata\Shopaholic\Classes\Collection\ProductCollection;
 use Lovata\Shopaholic\Models\Product as ProductModel;
 
-use Shohabbos\Shopaholicapi\Resources\StoreResource;
-use Shohabbos\Shopaholicapi\Resources\ProductResource;
+use Shohabbos\Shopaholicapi\Resources\Store\SingleResource as StoreSingleResource;
+use Shohabbos\Shopaholicapi\Resources\Store\MultiResource as StoreMultiResource;
+use Shohabbos\Shopaholicapi\Resources\Product\SingleResource as ProductSingleResource;
+use Shohabbos\Shopaholicapi\Resources\Product\MultiResource as ProductMultiResource;
 
 
 class StoreList  extends Controller
@@ -30,7 +32,7 @@ class StoreList  extends Controller
 
 		$list =	$query->paginate($perpage, $page);		
 
-		return StoreResource::collection($list);
+		return StoreMultiResource::collection($list);
 	}
 
 	public function page($id) {
@@ -43,7 +45,7 @@ class StoreList  extends Controller
 			return response()->json('not found', 401);
 		}
 
-		return new StoreResource($store);
+		return new StoreSingleResource($store);
 	}
 
 	public function storeProducts($id) {
@@ -61,7 +63,7 @@ class StoreList  extends Controller
 
 		$stores = $query->paginate($perpage, $page);
 
-		return ProductResource::collection($stores);	
+		return ProductMultiResource::collection($stores);	
 	}
 
 
