@@ -12,6 +12,7 @@ use Lovata\CompareShopaholic\Classes\Helper\CompareHelper;
 
 use Shohabbos\Shopaholicapi\Resources\Product\SingleResource;
 use Shohabbos\Shopaholicapi\Resources\Product\MultiResource;
+use Shohabbos\Shopaholicapi\Resources\ReviewResource;
 
 
 class ProductList extends Controller
@@ -129,6 +130,19 @@ class ProductList extends Controller
 		$data = new SingleResource($product);
 
 		return $data;
+	}
+
+
+	public function reviews($id) {
+		$product = ProductModel::find($id);
+
+		if (!$product) {
+			return response()->json(['message' => 'Not Found!'], 404);
+		}
+
+		$reviews = $product->review()->paginate(20, 1);
+
+		return ReviewResource::collection($reviews);
 	}
 
 
