@@ -17,6 +17,13 @@ class SingleResource extends Resource
         $data = [
             'id' => $this->id,
             'name' => $this->name,
+            'slug' => $this->slug,
+            'code' => $this->code,
+            'preview_text' => $this->preview_text,
+            'description' => $this->description,
+            'nest_depth' => $this->nest_depth,
+            'children_id_list' => $this->children_id_list,
+            'property_set_id' => $this->property_set_id,
             'parent_id' => $this->parent_id,
             'original_image' => new ImageResource($this->whenLoaded('preview_image')),
             'original_images' => ImageResource::collection($this->whenLoaded('images')),
@@ -42,7 +49,35 @@ class SingleResource extends Resource
             $data['images'] = $images;
         }
 
+        $data['product_filters'] = $this->loadProductFilters();
+
         return $data;
     }
     
+    public function loadProductFilters() {
+        $data = [];
+        $properties = $this->product_filter_property;
+ 
+        foreach ($properties as $key => $property) {
+            $filter = [
+                'name' => $properties->getFilterName($property->id),
+                'type' => $properties->getFilterType($property->id),
+            ];
+ 
+            $propertyValues = $property->property_value->sort();
+
+            foreach ($propertyValues as $value) {
+                $filter['values'][] = [
+                    'slug' => $value->slug,
+                    'value' => $value->value,
+                ];
+            }
+
+            $data[] = $filter;            
+        }
+
+        return $data;
+    }
+
+
 }

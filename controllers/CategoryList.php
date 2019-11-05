@@ -31,9 +31,7 @@ class CategoryList extends Controller
 			return response()->json(['message' => 'Not Found!'], 404);
 		}
 
-		$data = new SingleResource($model);
-
-		return $data;
+		return new SingleResource($model);
 	}
 
  
