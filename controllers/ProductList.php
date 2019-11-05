@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 // custom classess
 use Lovata\Shopaholic\Models\Product as ProductModel;
 use Lovata\Shopaholic\Classes\Item\ProductItem;
+use Lovata\Shopaholic\Classes\Item\CategoryItem;
 use Lovata\Shopaholic\Classes\Collection\ProductCollection;
 use Lovata\CompareShopaholic\Classes\Helper\CompareHelper;
 
@@ -48,24 +49,26 @@ class ProductList extends Controller
 		$label = input('label');
 		$wishlist = input('wishlist');
 		$compare = input('compare');
-		$categories = input('categoryies', []);
 		$page = input('page', 1);
 		$perpage = input('perpage', 20);
 		$search = input('search');
+		$filters = input('filters', []);
 
 		//
 		// filter
 		//
+		$categoryModel = $category ? CategoryItem::make($category) : null;
 		$list = ProductCollection::make()->active();
 
+
+		// filter by properties
+		if ($categoryModel && $filters && !empty($filters)) {
+			$list->filterByProperty($filters, $categoryModel->offer_filter_property);
+		}
 
 		// values: 'no', 'price|asc', 'price|desc', 'new', 'popularity|desc', 'rating|desc', 'rating|asc'
 		if ($sort) {
 			$list->sort($sort);
-		}
-
-		if ($category) {
-			$list->category($category);
 		}
 
 		if ($brand) {
@@ -92,12 +95,8 @@ class ProductList extends Controller
 			$list->compare();
 		}
 
-		if ($categories) {
-			$list->category($categories);
-		}
-
-		if (is_array($categories) && $categories) {
-			$list->category($categories);
+		if ($category) {
+			$list->category($category, true);
 		}
 
 		if ($search) {

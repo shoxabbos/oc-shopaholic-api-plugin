@@ -60,6 +60,7 @@ class SingleResource extends Resource
  
         foreach ($properties as $key => $property) {
             $filter = [
+                'id' => $property->id,
                 'name' => $properties->getFilterName($property->id),
                 'type' => $properties->getFilterType($property->id),
             ];
