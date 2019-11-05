@@ -24,7 +24,7 @@ class SingleResource extends Resource
             'category_id' => $this->category_id,
             'brand_id' => $this->brand_id,
             'preview_text' => $this->preview_text,
-            'description' => $this->description,
+            'description' => strip_tags($this->description),
             'rating' => $this->rating,
             'rating_data' => $this->rating_data,
             'offer_id_list' => $this->offer_id_list,
