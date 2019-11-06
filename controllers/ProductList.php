@@ -42,6 +42,7 @@ class ProductList extends Controller
 
 	public function index() {
 		$sort = input('sort');
+		$store = input('store');
 		$category = input('category');
 		$brand = input('brand');
 		$tag = input('tag');
@@ -77,6 +78,10 @@ class ProductList extends Controller
 
 		if ($tag) {
 			$list->tag($tag);
+		}
+
+		if ($store) {
+			$list->store($store);
 		}
 
 		if ($label) {
