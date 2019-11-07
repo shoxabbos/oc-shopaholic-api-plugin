@@ -4,6 +4,7 @@ use Illuminate\Http\Resources\Json\Resource;
 
 use Shohabbos\Shopaholicapi\Resources\ImageResource;
 use Shohabbos\Shopaholicapi\Resources\ReviewResource;
+use Shohabbos\Shopaholicapi\Resources\Brand\SingleResource as BrandSingleResource;
 
 class SingleResource extends Resource
 {
@@ -32,9 +33,9 @@ class SingleResource extends Resource
             'trashed' => $this->trashed,
             'property_value_array' => $this->property_value_array,
 
-            'offer' => self::collection($this->whenLoaded('offer')),
-            'related' => self::collection($this->whenLoaded('related')),
-            'accessory' => self::collection($this->whenLoaded('accessory')),
+            'offer' => OfferResource::collection($this->whenLoaded('offer')),
+            'related' => MultiResource::collection($this->whenLoaded('related')),
+            'accessory' => MultiResource::collection($this->whenLoaded('accessory')),
             'review' => ReviewResource::collection($this->whenLoaded('review')),
             'original_image' => new ImageResource($this->whenLoaded('preview_image')),
             'original_images' => ImageResource::collection($this->whenLoaded('images')),
@@ -58,6 +59,11 @@ class SingleResource extends Resource
         // load offers
         if ($this->offer) {
             $data['price'] = new OfferResource($this->offer()->first());
+        }
+
+        // load offers
+        if ($this->brand) {
+            $data['brand'] = new BrandSingleResource($this->brand);
         }
 
         // images for gallery
