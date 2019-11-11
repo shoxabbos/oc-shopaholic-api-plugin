@@ -16,6 +16,7 @@ class MultiResource extends Resource
     {
         $data = [
             'id' => $this->id,
+            'slug' => $this->slug,
             'name' => $this->name,
             'parent_id' => $this->parent_id,
         ];
