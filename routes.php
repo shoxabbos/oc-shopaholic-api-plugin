@@ -19,7 +19,7 @@ Route::group([
     Route::get('/brand/{id}', 'Shohabbos\Shopaholicapi\Controllers\BrandList@page');
 
     Route::get('/currencies', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@index');
-    Route::get('/currencies/{id}', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@page');
+    Route::get('/currency/{id}', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@page');
 
     Route::get('/categories', 'Shohabbos\Shopaholicapi\Controllers\CategoryList@index');
     Route::get('/category/{id}', 'Shohabbos\Shopaholicapi\Controllers\CategoryList@page');
