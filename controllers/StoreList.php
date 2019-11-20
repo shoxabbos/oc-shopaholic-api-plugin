@@ -21,7 +21,7 @@ class StoreList  extends Controller
 
 	public function index() {
 		$page = input('page', 1);
-		$perpage = input('perpage', 20);
+		$perpage = input('perpage', 10);
 		$searchQuery = input('query');
  		
 		$query = Store::with('logo');
