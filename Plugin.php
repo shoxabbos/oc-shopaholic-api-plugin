@@ -8,7 +8,11 @@ class Plugin extends PluginBase
 {
 
 	/** @var array Plugin dependencies */
-    public $require = ['Lovata.Shopaholic', 'Lovata.Toolbox'];
+    public $require = [
+        'Lovata.Shopaholic', 
+        'Lovata.Toolbox',
+        'RainLab.User',
+    ];
 
     public function registerComponents()
     {

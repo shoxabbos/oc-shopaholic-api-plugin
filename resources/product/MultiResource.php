@@ -18,18 +18,26 @@ class MultiResource extends Resource
             'name' => $this->name,
             'slug' => $this->slug,
             'code' => $this->code,
-            'category_id' => $this->category_id,
-            'brand_id' => $this->brand_id,
             'preview_text' => $this->preview_text,
             'rating' => $this->rating,
-            'rating_data' => $this->rating_data,
+            'category_id' => $this->category_id,
+            'brand_id' => $this->brand_id,
         ];
+
+        if ($this->brand) {
+            $data['brand_name'] = $this->brand->name;
+        }
+
+        if ($this->category) {
+            $data['category_name'] = $this->category->name;
+        }
 
         // image for preview
         if ($this->preview_image) {
             $data['preview_image'] = $this->preview_image->getThumb(250, 250, ['mode' => 'crop']);
             $data['original_preview_image'] = $this->preview_image->getPath();
         }
+
 
         // load offers
         if ($this->offer) {

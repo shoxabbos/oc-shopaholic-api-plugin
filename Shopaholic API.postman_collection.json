@@ -108,7 +108,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://pmall.uz/api/products",
+							"raw": "http://pmall.uz/api/products?category=71",
 							"protocol": "http",
 							"host": [
 								"pmall",
@@ -123,12 +123,6 @@
 									"key": "sort",
 									"value": "'no', 'price|asc', 'price|desc', 'new', 'popularity|desc', 'rating|desc', ",
 									"description": "Sort list",
-									"disabled": true
-								},
-								{
-									"key": "category",
-									"value": "1",
-									"description": "Filter by category",
 									"disabled": true
 								},
 								{
@@ -190,6 +184,10 @@
 									"value": "sneakers",
 									"description": "Search query",
 									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "71"
 								}
 							]
 						}
@@ -377,33 +375,173 @@
 			"name": "Auth",
 			"item": [
 				{
-					"name": "Login",
+					"name": "Sing in",
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "+998903519004",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "http://{{host}}/api/auth/login",
-							"protocol": "http",
+							"raw": "https://{{host}}/api/auth/signin",
+							"protocol": "https",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"auth",
-								"login"
+								"signin"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Sing in - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "+998903519004",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://{{host}}/api/auth/signin",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Jan 2020 10:45:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Server-Powered-By",
+									"value": "Engintron"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 97,\n        \"name\": \"shoxabbos\",\n        \"email\": \"19941001@inbox.ru1\",\n        \"phone\": null\n    },\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk3LCJpc3MiOiJodHRwczovL3BtYWxsLnV6L2FwaS9hdXRoL3NpZ25pbiIsImlhdCI6MTU3OTQzMDczNCwiZXhwIjoxNTc5NDM0MzM0LCJuYmYiOjE1Nzk0MzA3MzQsImp0aSI6IlhhVjZwZ1FkanhUUkt0YksifQ.aK9uvjCRwWNeqa00Lc6FMN6Tu3OVhTwmuQVdFkgnUVU\",\n    \"success\": \"Добро пожаловать, shoxabbos\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Sing up",
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "shoxabbos",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Olimjonov",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "+9989035190041",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "19941001@inbox.ru123",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "http://{{host}}/api/auth/signup",
-							"protocol": "http",
+							"raw": "https://{{host}}/api/auth/signup",
+							"protocol": "https",
 							"host": [
 								"{{host}}"
 							],
@@ -414,7 +552,117 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Sing up - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "shoxabbos",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "Olimjonov",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "+9989035190041",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "19941001@inbox.ru123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://{{host}}/api/auth/signup",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Jan 2020 10:46:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Server-Powered-By",
+									"value": "Engintron"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 98,\n        \"name\": \"shoxabbos\",\n        \"email\": \"19941001@inbox.ru123\",\n        \"phone\": null\n    },\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk4LCJpc3MiOiJodHRwczovL3BtYWxsLnV6L2FwaS9hdXRoL3NpZ251cCIsImlhdCI6MTU3OTQzMDc5NCwiZXhwIjoxNTc5NDM0Mzk0LCJuYmYiOjE1Nzk0MzA3OTQsImp0aSI6IjR0V3UwUTNDY2lhNkkxclYifQ.0OXn0zHF4cNN5phzgd1tOYVhU7hX34kAcIAMQnFtjKU\",\n    \"success\": \"Регистрация успешно прошла\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Refresh token",
@@ -422,39 +670,482 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://{{host}}/api/auth/refresh",
-							"protocol": "http",
+							"raw": "https://{{host}}/api/auth/refresh-token?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk3LCJpc3MiOiJodHRwczovL3BtYWxsLnV6L2FwaS9hdXRoL3NpZ25pbiIsImlhdCI6MTU3OTQzMDY2NCwiZXhwIjoxNTc5NDM0MjY0LCJuYmYiOjE1Nzk0MzA2NjQsImp0aSI6IkpiNk5KNWlmcll4WkYwb0MifQ.bl5BfjTfgazb--6filIqY-VEUNDRNt4sq0t65Xd59a8",
+							"protocol": "https",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"auth",
-								"refresh"
+								"refresh-token"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk3LCJpc3MiOiJodHRwczovL3BtYWxsLnV6L2FwaS9hdXRoL3NpZ25pbiIsImlhdCI6MTU3OTQzMDY2NCwiZXhwIjoxNTc5NDM0MjY0LCJuYmYiOjE1Nzk0MzA2NjQsImp0aSI6IkpiNk5KNWlmcll4WkYwb0MifQ.bl5BfjTfgazb--6filIqY-VEUNDRNt4sq0t65Xd59a8"
+								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Refresh token - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://{{host}}/api/auth/refresh-token?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk3LCJpc3MiOiJodHRwczovL3BtYWxsLnV6L2FwaS9hdXRoL3NpZ25pbiIsImlhdCI6MTU3OTQzMDY2NCwiZXhwIjoxNTc5NDM0MjY0LCJuYmYiOjE1Nzk0MzA2NjQsImp0aSI6IkpiNk5KNWlmcll4WkYwb0MifQ.bl5BfjTfgazb--6filIqY-VEUNDRNt4sq0t65Xd59a8",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"refresh-token"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk3LCJpc3MiOiJodHRwczovL3BtYWxsLnV6L2FwaS9hdXRoL3NpZ25pbiIsImlhdCI6MTU3OTQzMDY2NCwiZXhwIjoxNTc5NDM0MjY0LCJuYmYiOjE1Nzk0MzA2NjQsImp0aSI6IkpiNk5KNWlmcll4WkYwb0MifQ.bl5BfjTfgazb--6filIqY-VEUNDRNt4sq0t65Xd59a8"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Jan 2020 10:44:36 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Server-Powered-By",
+									"value": "Engintron"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk3LCJpc3MiOiJodHRwczovL3BtYWxsLnV6L2FwaS9hdXRoL3JlZnJlc2gtdG9rZW4iLCJpYXQiOjE1Nzk0MzA2NjQsImV4cCI6MTU3OTQzNDI3NiwibmJmIjoxNTc5NDMwNjc2LCJqdGkiOiJxRjF2ZlNhcUo0Z3A2M3FKIn0.a40ejHQASoAEZlhS7JCJRclv14pX1deS3lSVfs-foIc\",\n    \"user\": {\n        \"id\": \"97\",\n        \"name\": \"shoxabbos\",\n        \"email\": \"19941001@inbox.ru1\",\n        \"permissions\": null,\n        \"is_activated\": false,\n        \"activated_at\": null,\n        \"last_login\": null,\n        \"created_at\": \"2020-01-19 10:43:11\",\n        \"updated_at\": \"2020-01-19 10:43:11\",\n        \"username\": \"+998903519004\",\n        \"surname\": \"Olimjonov\",\n        \"deleted_at\": null,\n        \"last_seen\": null,\n        \"is_guest\": \"0\",\n        \"is_superuser\": \"0\",\n        \"is_store\": \"0\",\n        \"viewed_products\": null,\n        \"product_wish_list\": null,\n        \"phone\": null,\n        \"user_address\": null\n    },\n    \"success\": \"Токен был обновлен\"\n}"
+						}
+					]
 				},
 				{
-					"name": "Invalidate toke",
+					"name": "Invalidate token",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://{{host}}/api/auth/invalidate",
-							"protocol": "http",
+							"raw": "https://{{host}}/api/auth/invalidate-token?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk3LCJpc3MiOiJodHRwczovL3BtYWxsLnV6L2FwaS9hdXRoL3NpZ25pbiIsImlhdCI6MTU3OTQzMDczNCwiZXhwIjoxNTc5NDM0MzM0LCJuYmYiOjE1Nzk0MzA3MzQsImp0aSI6IlhhVjZwZ1FkanhUUkt0YksifQ.aK9uvjCRwWNeqa00Lc6FMN6Tu3OVhTwmuQVdFkgnUVU",
+							"protocol": "https",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"auth",
-								"invalidate"
+								"invalidate-token"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk3LCJpc3MiOiJodHRwczovL3BtYWxsLnV6L2FwaS9hdXRoL3NpZ25pbiIsImlhdCI6MTU3OTQzMDczNCwiZXhwIjoxNTc5NDM0MzM0LCJuYmYiOjE1Nzk0MzA3MzQsImp0aSI6IlhhVjZwZ1FkanhUUkt0YksifQ.aK9uvjCRwWNeqa00Lc6FMN6Tu3OVhTwmuQVdFkgnUVU"
+								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Invalidate token - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://{{host}}/api/auth/invalidate-token?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk3LCJpc3MiOiJodHRwczovL3BtYWxsLnV6L2FwaS9hdXRoL3NpZ25pbiIsImlhdCI6MTU3OTQzMDczNCwiZXhwIjoxNTc5NDM0MzM0LCJuYmYiOjE1Nzk0MzA3MzQsImp0aSI6IlhhVjZwZ1FkanhUUkt0YksifQ.aK9uvjCRwWNeqa00Lc6FMN6Tu3OVhTwmuQVdFkgnUVU",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"invalidate-token"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjk3LCJpc3MiOiJodHRwczovL3BtYWxsLnV6L2FwaS9hdXRoL3NpZ25pbiIsImlhdCI6MTU3OTQzMDczNCwiZXhwIjoxNTc5NDM0MzM0LCJuYmYiOjE1Nzk0MzA3MzQsImp0aSI6IlhhVjZwZ1FkanhUUkt0YksifQ.aK9uvjCRwWNeqa00Lc6FMN6Tu3OVhTwmuQVdFkgnUVU"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Jan 2020 10:47:43 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Server-Powered-By",
+									"value": "Engintron"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": \"Токен удален\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Restore password step 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "+998903519004",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{host}}/api/auth/restore-password",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"restore-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Restore password step 1 - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "+998903519004",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://{{host}}/api/auth/restore-password",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"restore-password"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "+99890351900",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Jan 2020 10:49:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Server-Powered-By",
+									"value": "Engintron"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": \"Вам на почту было отправлено письмо с инструкцией для восстановления пароля547033\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Reset password step 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "781959",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "+998903519004",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{host}}/api/auth/reset-password",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"reset-password"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Reset password step 2 - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "code",
+											"value": "781959",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "+998903519004",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://{{host}}/api/auth/reset-password",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"reset-password"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Jan 2020 10:53:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.25"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Server-Powered-By",
+									"value": "Engintron"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": \"Пароль изменен\"\n}"
+						}
+					]
 				}
 			],
 			"protocolProfileBehavior": {}
