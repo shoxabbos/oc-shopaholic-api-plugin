@@ -1,0 +1,859 @@
+{
+	"info": {
+		"_postman_id": "1369155f-6f41-46d3-a23f-099fd5e4efa6",
+		"name": "Shopaholic API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Category Page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://pmall.uz/api/categories/40",
+							"protocol": "http",
+							"host": [
+								"pmall",
+								"uz"
+							],
+							"path": [
+								"api",
+								"categories",
+								"40"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://pmall.uz/api/categories",
+							"protocol": "http",
+							"host": [
+								"pmall",
+								"uz"
+							],
+							"path": [
+								"api",
+								"categories"
+							],
+							"query": [
+								{
+									"key": "tree",
+									"value": "1 (boolean)",
+									"description": "Get only root items",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Pagination page number",
+									"disabled": true
+								},
+								{
+									"key": "perpage",
+									"value": "20",
+									"description": "Count items in page",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Smartphones",
+									"description": "Search query",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category Children",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/api/categories/40/children",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"40",
+								"children"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Product List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://pmall.uz/api/products",
+							"protocol": "http",
+							"host": [
+								"pmall",
+								"uz"
+							],
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "'no', 'price|asc', 'price|desc', 'new', 'popularity|desc', 'rating|desc', ",
+									"description": "Sort list",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "1",
+									"description": "Filter by category",
+									"disabled": true
+								},
+								{
+									"key": "brand",
+									"value": "1",
+									"description": "Filter by brand",
+									"disabled": true
+								},
+								{
+									"key": "tag",
+									"value": "1",
+									"description": "Filter by tag",
+									"disabled": true
+								},
+								{
+									"key": "viewed",
+									"value": "1 (boolean)",
+									"description": "Get only viewed products list",
+									"disabled": true
+								},
+								{
+									"key": "label",
+									"value": "1",
+									"description": "Filter by label",
+									"disabled": true
+								},
+								{
+									"key": "wishlist",
+									"value": "1 (boolean)",
+									"description": "Get wish list of products",
+									"disabled": true
+								},
+								{
+									"key": "compare",
+									"value": "1 (boolean)",
+									"description": "Get list of compare products",
+									"disabled": true
+								},
+								{
+									"key": "categoryies",
+									"value": "[1, 2] (array)",
+									"description": "Filter by categories",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"description": "Pagination page number",
+									"disabled": true
+								},
+								{
+									"key": "perpage",
+									"value": "20",
+									"description": "Pagination perpage products ",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "sneakers",
+									"description": "Search query",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://pmall.uz/api/product/632",
+							"protocol": "http",
+							"host": [
+								"pmall",
+								"uz"
+							],
+							"path": [
+								"api",
+								"product",
+								"632"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Brand",
+			"item": [
+				{
+					"name": "Brand page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/api/brands/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"brands",
+								"1"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "id",
+									"description": "Filter by brand fields",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Pagination page 1",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Apple",
+									"description": "Search query",
+									"disabled": true
+								},
+								{
+									"key": "perpage",
+									"value": "20",
+									"description": "Count items in result",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "1",
+									"description": "Filter by category",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Brand list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/api/brands",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"brands"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Currency",
+			"item": [
+				{
+					"name": "Currency LIst",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/api/currencies",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"currencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Currency Page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/api/currencies/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"currencies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Switch",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"currency\": \"USD\"\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/currencies/switch",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"currencies",
+								"switch"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sing up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/api/auth/refresh",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalidate toke",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/api/auth/invalidate",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"invalidate"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Add to cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cart\": [\n        {\"offer_id\": 2, \"quantity\": 4, \"property\": {\"double_cheese\": true}},\n        {\"offer_id\": 5, \"quantity\": 1, \"property\": {\"double_cheese\": false}},\n        {\"offer_id\": 10, \"quantity\": 1, \"property\": {\"double_cheese\": true}}\n    ],\n    \"shipping_type_id\": 4\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/cartlist/add",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"cartlist",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cart update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cart\": [\n        {\"offer_id\": 2, \"quantity\": 4},\n        {\"offer_id\": 5, \"quantity\": 1},\n        {\"offer_id\": 10, \"quantity\": 1}\n    ],\n    \"shipping_type_id\": 2\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/cartlist/update",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"cartlist",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cart remove items",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cart\": [2,10],\n    \"shipping_type_id\": 4\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/cartlist/remove",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"cartlist",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore cart items",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cart\": [2,10],\n    \"shipping_type_id\": 4\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/cartlist/restore",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"cartlist",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clear cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/api/cartlist/clear",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"cartlist",
+								"clear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set shipping type",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"shipping_type_id\": 1\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/cartlist/setshippingtype",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"cartlist",
+								"setshippingtype"
+							]
+						},
+						"description": "Method allows you to send ajax request with ID of active shipping type and get updated cart data"
+					},
+					"response": []
+				},
+				{
+					"name": "Save data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n    \t\"email\": \"test@test.com\"\n    },\n    \"property\": {\n    \t\"comment\": \"User comment ...\"\n    },\n    \"billing_address\": {},\n    \"shipping_address\": {},\n    \"shipping_type_id\": 2,\n    \"payment_method_id\": 3\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/cartlist/savedata",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"cartlist",
+								"savedata"
+							]
+						},
+						"description": "Method save data in cart object. For example, for the checkout page, divided into steps."
+					},
+					"response": []
+				},
+				{
+					"name": "Get cart items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/api/cartlist/get",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"cartlist",
+								"get"
+							]
+						},
+						"description": "Method returns CartPositionCollection class object. You can pass active sipping type object to the method to get the total cost of the order with shipping price. "
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order\": {\n        \"payment_method_id\": 1,\n        \"shipping_type_id\": 2,\n        \"shipping_price\": 10.5,\n        \"property\": {\n            \"address\": \"...\",\n            \"city\": \"Minsk\"\n        }\n    },\n    \"user\": {\n        \"email\": \"test@test.com\",\n        \"name\": \"Andrey\"\n    },\n    \"shipping_address\": {\n        \"id\": 10\n    },\n    \"billing_address\": {\n        \"country\": \"Belarus\",\n        \"address1\": \"test 1\",\n        \"address2\": \"test 2\"\n    }\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/order/create",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"create"
+							]
+						},
+						"description": "The component allows to create orders."
+					},
+					"response": []
+				},
+				{
+					"name": "Order page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/api/order/get/2873ey382gxadjygadw6f237236",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"get",
+								"2873ey382gxadjygadw6f237236"
+							]
+						},
+						"description": "The component allows to display page with data of completed orders."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "Add review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"product_id\": 39,\n\t\"email\": \"19941001@inbox.ru\",\n\t\"comment\": \"this is simple test comment\",\n\t\"rating\": 4\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/review/create",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"review",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Payment method list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/api/paymentmethodlist?sort=id",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"paymentmethodlist"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Shipping type List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/api/shippingtypelist",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"shippingtypelist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tag List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/api/tags",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
