@@ -57,12 +57,11 @@ class User extends Controller
         $data = Input::only('username', 'name', 'surname', 'password', 'password_confirmation', 'email', 'avatar', 'insurance_id');
 
         $rules = [
-            'name' => 'string|required',
-            'surname' => 'string|required',
-            'username' => 'string|required',
-            'email' => 'email|required',
+            'name' => 'string',
+            'surname' => 'string',
+            'username' => 'string',
+            'email' => 'email',
             'avatar' => 'nullable|image',
-            'insurance_id' => 'exists:itmaker_dtpapp_insurances,id',
             'password' => 'sometimes|required|between:6,255|confirmed',
             'password_confirmation' => 'required_with:password|between:6,255',
         ];
