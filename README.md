@@ -2,6 +2,9 @@
 API plugin for Shopaholic by Itmaker. The plugin contains mere than 25 API methods. You can see it here [Postman Collection](https://raw.githubusercontent.com/shoxabbos/oc-shopaholic-api-plugin/master/Shopaholic%20API.postman_collection.json)
 
 
+**I will gradually add api and documentation in the near future...**
+
+
 ## List of products
 * METHOD: `GET`
 * URL:  `/api/products`
