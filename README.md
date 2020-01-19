@@ -1,5 +1,6 @@
 # oc-shopaholic-api-plugin
-API plugin for Shopaholic by Itmaker
+API plugin for Shopaholic by Itmaker. The plugin contains mere than 25 API methods. You can see it here 
+`https://raw.githubusercontent.com/shoxabbos/oc-shopaholic-api-plugin/master/Shopaholic%20API.postman_collection.json` 
 
 
 ## List of products
