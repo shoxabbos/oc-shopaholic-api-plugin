@@ -49,7 +49,6 @@ class ProductList extends Controller
 		$viewed = input('viewed');
 		$label = input('label');
 		$wishlist = input('wishlist');
-		$compare = input('compare');
 		$page = input('page', 1);
 		$perpage = input('perpage', 20);
 		$search = input('search');
@@ -94,10 +93,6 @@ class ProductList extends Controller
 
 		if ($wishlist) {
 			$list->wishList();
-		}
-
-		if ($compare) {
-			$list->compare();
 		}
 
 		if ($category) {
