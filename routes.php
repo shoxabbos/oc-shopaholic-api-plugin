@@ -4,7 +4,10 @@ use Lovata\Toolbox\Classes\Helper\UserHelper;
 
 Route::group([
     'prefix' => 'api', 
-    'middleware' => 'Shohabbos\Shopaholicapi\Middleware\ResponseMiddleware'
+    'middleware' => [
+        'Shohabbos\Shopaholicapi\Middleware\Logger',
+        'Shohabbos\Shopaholicapi\Middleware\LanguageDetector' // only if you have installed RainLab.Translate plugin
+    ]
 ], function () {
 
     //
