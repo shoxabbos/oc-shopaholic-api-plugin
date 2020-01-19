@@ -2,7 +2,7 @@
 API plugin for Shopaholic by Itmaker
 
 
-#### List of products
+## List of products
 * METHOD: `GET`
 * URL:  `/api/products`
 * PARAMS:
