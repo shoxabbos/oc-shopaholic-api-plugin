@@ -2,9 +2,11 @@
 
 use Illuminate\Http\Resources\Json\Resource;
 
+use Shohabbos\Shopaholicapi\Resources\StoreResource;
 use Shohabbos\Shopaholicapi\Resources\ImageResource;
 use Shohabbos\Shopaholicapi\Resources\ReviewResource;
 use Shohabbos\Shopaholicapi\Resources\Brand\SingleResource as BrandSingleResource;
+use Shohabbos\Shopaholicapi\Resources\Category\SingleResource as CategorySingleResource;
 
 class SingleResource extends Resource
 {
@@ -22,6 +24,7 @@ class SingleResource extends Resource
             'name' => $this->name,
             'slug' => $this->slug,
             'code' => $this->code,
+            'store_id' => $this->store_id,
             'category_id' => $this->category_id,
             'brand_id' => $this->brand_id,
             'preview_text' => $this->preview_text,
@@ -64,6 +67,15 @@ class SingleResource extends Resource
         // load offers
         if ($this->brand) {
             $data['brand'] = new BrandSingleResource($this->brand);
+        }
+
+        // load brand
+        if ($this->category) {
+            $data['category'] = new CategorySingleResource($this->category);
+        }
+
+        if ($this->store) {
+            $data['store'] = new StoreResource($this->store);
         }
 
         // images for gallery

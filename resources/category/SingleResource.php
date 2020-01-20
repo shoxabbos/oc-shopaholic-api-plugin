@@ -58,7 +58,7 @@ class SingleResource extends Resource
         $data = [];
         $properties = $this->product_filter_property;
  
-        foreach ($properties as $key => $property) {
+        if (is_array($properties)) foreach ($properties as $key => $property) {
             $filter = [
                 'id' => $property->id,
                 'name' => $properties->getFilterName($property->id),
