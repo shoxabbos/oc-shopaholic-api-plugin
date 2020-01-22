@@ -50,7 +50,7 @@ Route::group([
 
 
 
-
+ 
 
 
 
@@ -60,7 +60,7 @@ Route::group([
 
 
     // collections
-    Route::get('/banners', 'Shohabbos\Shopaholicapi\Controllers\BannerList@index');    
+    Route::get('/banners/{type}', 'Shohabbos\Shopaholicapi\Controllers\BannerList@index');    
     Route::post('/currencies/switch', 'Shohabbos\Shopaholicapi\Controllers\CurrencyList@switch');
     Route::get('/tags', 'Shohabbos\Shopaholicapi\Controllers\TagList@index');
     Route::get('/labels', 'Shohabbos\Shopaholicapi\Controllers\LabelList@index');
@@ -69,16 +69,7 @@ Route::group([
     //
     // Private methods
     //
-    Route::post('/statuslist', 'Shohabbos\Shopaholicapi\Controllers\StatusList@page');      
-    Route::get('/cartlist/get', 'Shohabbos\Shopaholicapi\Controllers\CartList@get');
-    Route::post('/cartlist/add', 'Shohabbos\Shopaholicapi\Controllers\CartList@add');
-    Route::post('/cartlist/update', 'Shohabbos\Shopaholicapi\Controllers\CartList@update');
-    Route::delete('/cartlist/remove', 'Shohabbos\Shopaholicapi\Controllers\CartList@remove');
-    Route::post('/cartlist/restore', 'Shohabbos\Shopaholicapi\Controllers\CartList@restore');
-    Route::post('/cartlist/clear', 'Shohabbos\Shopaholicapi\Controllers\CartList@clear');
-    Route::post('/cartlist/setshippingtype', 'Shohabbos\Shopaholicapi\Controllers\CartList@setShippingType');
-    Route::post('/cartlist/savedata', 'Shohabbos\Shopaholicapi\Controllers\CartList@saveData');
-
+    Route::post('/statuslist', 'Shohabbos\Shopaholicapi\Controllers\StatusList@page');
 
     Route::get('/order/get/{slug}', 'Shohabbos\Shopaholicapi\Controllers\Order@get');
     Route::post('/order/create', 'Shohabbos\Shopaholicapi\Controllers\Order@create');
@@ -97,6 +88,10 @@ Route::group([
 ], function() {
     // private methods of user
     Route::get('user/get', 'Shohabbos\Shopaholicapi\Controllers\User@get');
+    Route::get('user/orders', 'Shohabbos\Shopaholicapi\Controllers\User@orders');
+
     Route::post('user/update', 'Shohabbos\Shopaholicapi\Controllers\User@update');
     Route::post('user/set-device-conf', 'Shohabbos\Shopaholicapi\Controllers\User@setDeviceConf');
+
+
 });

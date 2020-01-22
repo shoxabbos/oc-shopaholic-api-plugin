@@ -71,7 +71,7 @@ class SingleResource extends Resource
 
         // load brand
         if ($this->category) {
-            $data['category'] = new CategorySingleResource($this->category);
+            $data['category'] = $this->category;
         }
 
         if ($this->store) {

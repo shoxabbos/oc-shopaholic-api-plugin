@@ -20,6 +20,10 @@ class User extends Controller
         $this->user = $this->auth();
     }
 
+    public function orders() {
+        return $this->user->order;
+    }
+
     public function get() {
         return new UserResource($this->user);
     }

@@ -12,7 +12,12 @@ class BannerResource extends Resource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        $data = parent::toArray($request);
+
+        $data['image'] = $this->image;
+        $data['background'] = $this->background;
+
+        return $data;
     }
     
 }
