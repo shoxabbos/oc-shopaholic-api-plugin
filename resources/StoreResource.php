@@ -12,7 +12,11 @@ class StoreResource extends Resource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        $data = parent::toArray($request);
+
+        $data['logo'] = $this->logo;
+
+        return $data;
     }
     
 }

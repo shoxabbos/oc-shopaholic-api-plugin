@@ -70,9 +70,7 @@ Route::group([
     // Private methods
     //
     Route::post('/statuslist', 'Shohabbos\Shopaholicapi\Controllers\StatusList@page');
-
     Route::get('/order/get/{slug}', 'Shohabbos\Shopaholicapi\Controllers\Order@get');
-    Route::post('/order/create', 'Shohabbos\Shopaholicapi\Controllers\Order@create');
     Route::post('/review/create', 'Shohabbos\Shopaholicapi\Controllers\Review@create');
 });
 
@@ -89,6 +87,7 @@ Route::group([
     // private methods of user
     Route::get('user/get', 'Shohabbos\Shopaholicapi\Controllers\User@get');
     Route::get('user/orders', 'Shohabbos\Shopaholicapi\Controllers\User@orders');
+    Route::post('user/orders/create', 'Shohabbos\Shopaholicapi\Controllers\Order@makeOrder');
 
     Route::post('user/update', 'Shohabbos\Shopaholicapi\Controllers\User@update');
     Route::post('user/set-device-conf', 'Shohabbos\Shopaholicapi\Controllers\User@setDeviceConf');
