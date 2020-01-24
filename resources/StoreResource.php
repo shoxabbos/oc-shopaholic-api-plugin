@@ -15,6 +15,7 @@ class StoreResource extends Resource
         $data = parent::toArray($request);
 
         $data['logo'] = $this->logo;
+        $data['pmall_phone'] = "+998954788020";
 
         return $data;
     }
