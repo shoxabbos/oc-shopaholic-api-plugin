@@ -112,7 +112,14 @@ class Order extends Controller
         //Result::setMessage($this->obPaymentGateway->getMessage());
         $this->prepareResponseData();
 
-        return Result::data();
+        $data = Result::data();
+
+        if ($this->obOrder) {
+            $data['total_price'] = $this->obOrder->total_price;
+            $data['total_price_value'] = $this->obOrder->total_price_value;
+        }
+
+        return $data;
 	}
 
 

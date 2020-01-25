@@ -15,7 +15,7 @@ class BannerList  extends Controller
 	
 	public function index($type = 'main') {
 		if ($type == 'main') {
-			$list = BannerModel::where('size_id', 26)->get();
+			$list = BannerModel::where('size_id', 33)->get();
 		} else {
 			$list = BannerModel::get();
 		}
