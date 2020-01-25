@@ -19,6 +19,7 @@ class MultiResource extends Resource
             'slug' => $this->slug,
             'name' => $this->name,
             'parent_id' => $this->parent_id,
+            'children' => $this->children
         ];
 
         // image for preview
