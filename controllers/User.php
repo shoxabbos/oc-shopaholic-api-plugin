@@ -58,12 +58,13 @@ class User extends Controller
 
     public function update() {
         $user = $this->auth();
-        $data = Input::only('username', 'name', 'surname', 'password', 'password_confirmation', 'email', 'avatar', 'insurance_id');
+        $data = Input::only('username', 'name', 'surname', 'password', 'user_address', 'password_confirmation', 'email', 'avatar', 'insurance_id');
 
         $rules = [
             'name' => 'string',
             'surname' => 'string',
             'username' => 'string',
+            'user_address' => 'string',
             'email' => 'email',
             'avatar' => 'nullable|image',
             'password' => 'sometimes|required|between:6,255|confirmed',

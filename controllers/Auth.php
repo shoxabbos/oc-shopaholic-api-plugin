@@ -15,10 +15,10 @@ class Auth extends Controller
 {
     // Send code
     public function restorePassword() {
-        $data = Input::only('username');
+        $data = Input::only('email');
 
         $rules = [
-            'username' => 'required|min:5|exists:users,username',
+            'email' => 'required|min:5|exists:users,email',
         ];
 
         $validation = Validator::make($data, $rules);
@@ -26,7 +26,7 @@ class Auth extends Controller
             return response()->json(['error' => "Введен не правильный логин"], 422);
         }
 
-        $user = UserModel::where('username', $data['username'])->first();
+        $user = UserModel::where('email', $data['email'])->first();
 
 
         $user->reset_password_code = $code = rand(111111, 999999);
@@ -50,11 +50,11 @@ class Auth extends Controller
 
     // Confirm code & password
     public function resetPassword() {
-        $data = Input::only('code', 'username', 'password');
+        $data = Input::only('code', 'email', 'password');
 
         $rules = [
             'code' => 'required|min:4|max:8',
-            'username' => 'required|exists:users,username',
+            'email' => 'required|exists:users,email',
             'password' => 'required|between:' . UserModel::getMinPasswordLength() . ',255'
         ];
 
@@ -63,7 +63,7 @@ class Auth extends Controller
             return response()->json(['error' => $validation->messages()->first()], 422);
         }
 
-        $user = UserModel::where('username', $data['username'])->first();
+        $user = UserModel::where('email', $data['email'])->first();
 
         if (!$user) {
             return response()->json(['error' => "Пользователь не найден"], 422);
@@ -81,10 +81,10 @@ class Auth extends Controller
 
 
     public function signin() {
-        $data = Input::only('username', 'password');
+        $data = Input::only('email', 'password');
 
         $rules = [
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required|min:5'
         ];
 
@@ -117,12 +117,12 @@ class Auth extends Controller
     }
 
     public function signup() {
-        $credentials = Input::only('name', 'surname', 'email', 'username', 'password', 'password_confirmation', 'insurance_id');
+        $credentials = Input::only('name', 'surname', 'email', 'email', 'password', 'password_confirmation', 'insurance_id');
 
         $rules = [
             'name'      => 'required|min:3',
             'surname'   => 'required|min:3',
-            'username'  => 'required|unique:users,username',
+            'email'  => 'required|unique:users,email',
             'password'  => 'required|min:6|confirmed',
             'email'     => 'required|min:3|email|unique:users,email'
         ];
