@@ -1,6 +1,8 @@
 <?php
+use Illuminate\Http\Request;
 use RainLab\User\Models\User as UserModel;
 use Lovata\Toolbox\Classes\Helper\UserHelper;
+use Shohabbos\Shopaholicapi\Resources\UserResource;
 
 Route::group([
     'prefix' => 'api', 
@@ -94,3 +96,76 @@ Route::group([
 
 
 });
+
+
+
+
+
+
+Route::get('api/sociallogin/{provider}/auth', function (Request $request, $provider_name) {
+    $access_token = Input::get('access_token');
+
+    \Log::debug([
+        'request' => $request->header(),
+        'input' => \Input::all(),
+    ]);
+
+    $provider_class = \Flynsarmy\SocialLogin\Classes\ProviderManager::instance()
+        ->resolveProvider($provider_name);
+
+    if ( !$provider_class )
+        return Redirect::to($error_redirect)->withErrors("Unknown login provider: $provider_name.");
+
+    $provider = $provider_class::instance();
+    $adapter = $provider->getAdapter();
+
+    $adapter->setAccessToken(['access_token' => $access_token]);
+    $token = $adapter->getAccessToken();
+    $profile = $adapter->getUserProfile();
+    $adapter->disconnect();
+
+    $provider_response = [
+        'token' => $token,
+        'profile' => $profile
+    ];
+
+
+    ksort($provider_response['token']);
+
+    $provider_details = [
+        'provider_id' => $provider_name,
+        'provider_token' => $provider_response['token'],
+    ];
+    $user_details = $provider_response['profile'];
+
+    if (isset($user_details->email) || empty($user_details->email)) {
+        $user_details->email = $user_details->identifier."@gmail.com";
+    }
+    
+    // Grab the user associated with this provider. Creates or attach one if need be.
+    $user = \Flynsarmy\SocialLogin\Classes\UserManager::instance()->find(
+        $provider_details,
+        $user_details
+    );
+
+    // Support custom login handling
+    $result = Event::fire('flynsarmy.sociallogin.handleLogin', [
+        $provider_details, $provider_response, $user
+    ], true);
+
+
+    if ( $result ) {
+        return $result;
+    }
+
+    Auth::login($user);
+    $tokennn = JWTAuth::fromUser($user);
+
+    return [
+        'data' => new UserResource($user),
+        'token' => $tokennn,
+        'success' => 'Добро пожаловать, '.$user->name
+    ];
+});
+
+

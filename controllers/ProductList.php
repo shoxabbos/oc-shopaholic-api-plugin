@@ -53,10 +53,13 @@ class ProductList extends Controller
 		$search = input('search');
 		$filters = input('filters', []);
 
+
 		//
 		// filter
 		//
 		$categoryModel = $category ? CategoryItem::make($category) : null;
+
+
 		$list = ProductCollection::make()->active();
 
 
