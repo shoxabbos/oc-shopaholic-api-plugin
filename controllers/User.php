@@ -21,7 +21,20 @@ class User extends Controller
     }
 
     public function orders() {
-        return $this->user->order;
+        $result = [];
+        $data = $this->user->order()->with('status')->get();
+
+        foreach ($data as $key => $value) {
+            $item = $value->toArray();
+
+            $item['total_price'] =  $value->total_price;
+            $item['total_price_value'] =  $value->total_price_value;
+            
+
+            $result[] = $item;
+        }
+
+        return $result;
     }
 
     public function get() {

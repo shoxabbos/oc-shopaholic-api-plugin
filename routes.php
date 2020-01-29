@@ -139,7 +139,7 @@ Route::get('api/sociallogin/{provider}/auth', function (Request $request, $provi
     $user_details = $provider_response['profile'];
 
     if (isset($user_details->email) || empty($user_details->email)) {
-        $user_details->email = $user_details->identifier."@gmail.com";
+        $user_details->email = $user_details->identifier."@pmall.uz";
     }
     
     // Grab the user associated with this provider. Creates or attach one if need be.
